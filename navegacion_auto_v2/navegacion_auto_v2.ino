@@ -165,12 +165,16 @@ bool girar90Izq () {
       if (i%500 == 0) {    //explicado en la función de abajo
         girarHorario ();
         delay(500);
+        detenerse ();
+        delay(500);
         distancia = calcularDistancia ();
         if (distancia > umbral) {
           frenteLibre = true;
         } else {
           girarAntiHorario ();
           delay (500);
+          detenerse();
+          delay(500);
         }
       }
       if (frenteLibre == false) {
@@ -237,6 +241,8 @@ bool girar90Der () {
     while (distancia > umbral && i < tiempoAvance && frenteLibre == false) {  
       if (i%500 == 0) {   //como tiene un radar en el frente nada más, cada medio segundo gira 90 grados para quedar en la dirección original,
         girarAntiHorario ();   //analiza si el frente está libre, si no lo está gira 90 grados para el otro lado, y sigue avanzando
+        delay(500);
+        detenerse();      
         delay(500);             //paralelo al obstáculo hasta que cumpla el tiempoAvance máximo. 
         distancia = calcularDistancia ();
         if (distancia > umbral) {
@@ -244,6 +250,8 @@ bool girar90Der () {
         } else {
           girarHorario ();
           delay (500);
+          detenerse();
+          delay(100);
         }
       }
       if (frenteLibre  == false) {
@@ -424,6 +432,7 @@ void giro180 () {
     delay (100);
     i += 100;
   }
+  Serial.println("gira 180");
 }
 //distancia en 2 lugares??
 void setup() {
@@ -532,9 +541,12 @@ void loop() {
     } else {
         bool evadirIzq = girar90Izq ();
         if (evadirIzq == false) {
+          detenerse ();
+          delay (500);
           bool evadirDer = girar90Der ();
           if (evadirDer == false) {
-            Serial.println("gira 180");
+            detenerse ();
+            delay(500);
             marchaAtras();
             delay(500);
             giro180();
