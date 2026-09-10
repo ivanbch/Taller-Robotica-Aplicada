@@ -1,5 +1,7 @@
 # Taller Robótica Aplicada - Rover ESP8266
 
+> 🚧 **Nota sobre el código:** Este repositorio contiene mi primer acercamiento práctico a la robótica y sistemas embebidos. Actualmente se encuentra en proceso de **refactorización** para reemplazar el código bloqueante (`delay()`) por Máquinas de Estado Finitas (FSM), implementando buenas prácticas de C/C++ para microcontroladores como paso previo a trabajar con RTOS.
+
 Este repositorio contiene todo el código y herramientas para el Rover desarrollado durante el Taller de Robótica Aplicada de la Fundación INVAP y UNRN. El proyecto está enfocado en proporcionarle al rover capacidades de movimiento manual (vía app/scripts) y autónomo (evasión de obstáculos), utilizando un ESP8266.
 
 ## Estructura del Repositorio
