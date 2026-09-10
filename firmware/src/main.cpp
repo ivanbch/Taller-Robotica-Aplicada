@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <autonomia.h>
+#include <autonomia_fsm.h> // <-- ¡Nuestra nueva máquina de estados!
 #include <navegacion.h>
 #include <conexion.h>
 /*
@@ -24,6 +25,7 @@ void setup() {
 void loop() {
   manejarMiCliente();
   if (!manual) {
-    autonomiaSimple();
+    // autonomiaSimple(); // <-- Esta era tu función vieja (bloqueante)
+    actualizarAutonomiaFSM(); // <-- ¡Nuestra nueva función no bloqueante!
   }
-  } 
+} 
